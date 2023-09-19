@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/ContadorG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/ResetG"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/Reset1"
+        />
+
+    <Button
+        android:id="@+id/ResetG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET ALL"
+        app:layout_constraintLeft_toRightOf="@+id/ContadorG"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/Reset1"
+        />
+
+    <TextView
+        android:id="@+id/Contador1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/Sumar1"
+        app:layout_constraintTop_toBottomOf="@id/ResetG"
+        app:layout_constraintBottom_toTopOf="@id/Contador2"
+        />
+
+    <Button
+        android:id="@+id/Sumar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+1"
+        app:layout_constraintLeft_toRightOf="@+id/Contador1"
+        app:layout_constraintRight_toLeftOf="@id/Reset1"
+        app:layout_constraintTop_toBottomOf="@id/ResetG"
+        app:layout_constraintBottom_toTopOf="@id/Sumar2"
+        />
+
+    <Button
+        android:id="@+id/Reset1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET"
+        app:layout_constraintLeft_toRightOf="@+id/Sumar1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ResetG"
+        app:layout_constraintBottom_toTopOf="@id/Reset2"
+        />
+
+    <TextView
+        android:id="@+id/Contador2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/Sumar2"
+        app:layout_constraintTop_toBottomOf="@id/Contador1"
+        app:layout_constraintBottom_toTopOf="@id/Contador3"
+        />
+
+    <Button
+        android:id="@+id/Sumar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+1"
+        app:layout_constraintLeft_toRightOf="@+id/Contador2"
+        app:layout_constraintRight_toLeftOf="@id/Reset2"
+        app:layout_constraintTop_toBottomOf="@id/Sumar1"
+        app:layout_constraintBottom_toTopOf="@id/Sumar3"
+        />
+
+    <Button
+        android:id="@+id/Reset2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET"
+        app:layout_constraintLeft_toRightOf="@+id/Sumar2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Reset1"
+        app:layout_constraintBottom_toTopOf="@id/Reset3"
+        />
+
+    <TextView
+        android:id="@+id/Contador3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/Sumar3"
+        app:layout_constraintTop_toBottomOf="@id/Contador2"
+        app:layout_constraintBottom_toTopOf="@id/Contador4"
+        />
+
+    <Button
+        android:id="@+id/Sumar3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+1"
+        app:layout_constraintLeft_toRightOf="@+id/Contador3"
+        app:layout_constraintRight_toLeftOf="@id/Reset3"
+        app:layout_constraintTop_toBottomOf="@id/Sumar2"
+        app:layout_constraintBottom_toTopOf="@id/Sumar4"
+        />
+
+    <Button
+        android:id="@+id/Reset3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET"
+        app:layout_constraintLeft_toRightOf="@+id/Sumar3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Reset2"
+        app:layout_constraintBottom_toTopOf="@id/Reset4"
+        />
+
+    <TextView
+        android:id="@+id/Contador4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/Sumar4"
+        app:layout_constraintTop_toBottomOf="@id/Contador3" />
+
+    <Button
+        android:id="@+id/Sumar4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+1"
+        app:layout_constraintLeft_toRightOf="@+id/Contador4"
+        app:layout_constraintRight_toLeftOf="@id/Reset4"
+        app:layout_constraintTop_toBottomOf="@id/Sumar3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <Button
+        android:id="@+id/Reset4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET"
+        app:layout_constraintLeft_toRightOf="@+id/Sumar4"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Reset3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
