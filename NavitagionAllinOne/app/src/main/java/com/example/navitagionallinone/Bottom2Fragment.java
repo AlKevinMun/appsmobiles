@@ -18,6 +18,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.navitagionallinone.databinding.FragmentBottom2Binding;
 import com.example.navitagionallinone.databinding.FragmentTabbed1Binding;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 
 public class Bottom2Fragment extends Fragment {
@@ -52,5 +54,21 @@ public class Bottom2Fragment extends Fragment {
                 return 3;
             }
         });
+        new TabLayoutMediator(binding.tabLayout, binding.viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                switch (position) {
+                    case 0: default:
+                        tab.setText("TAB A");
+                        break;
+                    case 1:
+                        tab.setText("TAB B");
+                        break;
+                    case 2:
+                        tab.setText("TAB C");
+                        break;
+                }
+            }
+        }).attach();
     }
 }
