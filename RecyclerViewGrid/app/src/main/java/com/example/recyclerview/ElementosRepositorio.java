@@ -1,37 +1,47 @@
 package com.example.recyclerview;
 
+import android.app.Application;
+
+import androidx.lifecycle.LiveData;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class ElementosRepositorio {
 
-    List<Elemento> elementos = new ArrayList<>();
+    ElementosBaseDeDatos.ElementosDao elementosDao;
 
-    interface Callback {
-        void cuandoFinalice(List<Elemento> elementos);
+    ElementosRepositorio(Application application){
+        elementosDao = ElementosBaseDeDatos.obtenerInstancia(application).obtenerElementosDao();
     }
 
-    ElementosRepositorio(){
-        elementos.add(new Elemento("Humano", "La raza humana se caracteriza por no ser muy longeva",R.drawable.humano));
-        elementos.add(new Elemento("Elfo", "La raza elfica destaca por su larga longevidad y su vida en los bosques",R.drawable.elfo));
-        elementos.add(new Elemento("Enano", "La raza enana se caracteriza de subaja estatura y su gran habilidad metalurgica",R.drawable.enano));
-        elementos.add(new Elemento("Gnomo", "Esta raza es una especie de fusion entre los humanos y los enanos",R.drawable.gnomo));
-        elementos.add(new Elemento("Orco", "La raza de orcos se caracteriza por su poca inteligencia, y su gran habilidad en combates fisicos",R.drawable.orco));
-        elementos.add(new Elemento("Kobol", "La raza de kobols es una raza monstruosa que normalmente atormenta a humanos y gnomos",R.drawable.kobol));
+    Executor executor = Executors.newSingleThreadExecutor();
 
+    LiveData<List<Elemento>> obtener(){
+        return elementosDao.obtener();
     }
 
-    List<Elemento> obtener() {
-        return elementos;
+    void insertar(Elemento elemento){
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                elementosDao.insertar(elemento);
+            }
+        });
     }
 
-    void insertar(Elemento elemento, Callback callback){
-        elementos.add(elemento);
-        callback.cuandoFinalice(elementos);
+    void eliminar(Elemento elemento) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                elementosDao.eliminar(elemento);
+            }
+        });
     }
 
-    void eliminar(Elemento elemento, Callback callback) {
-        elementos.remove(elemento);
-        callback.cuandoFinalice(elementos);
+    LiveData<List<Elemento>> buscar(String t) {
+        return elementosDao.buscar(t);
     }
 }

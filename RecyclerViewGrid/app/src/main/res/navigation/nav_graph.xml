@@ -5,18 +5,20 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/recyclerElementosFragment">
 
+
+
     <fragment
         android:id="@+id/recyclerElementosFragment"
         android:name="com.example.recyclerview.RecyclerElementosFragment"
         android:label="fragment_recycler_elementos"
-        tools:layout="@layout/fragment_recycler_elementos" >
-        <action
-            android:id="@+id/action_recyclerElementosFragment_to_nuevoElementoFragment"
-            app:destination="@id/nuevoElementoFragment" />
-        <action
-            android:id="@+id/action_recyclerElementosFragment_to_mostrarElementoFragment"
-            app:destination="@id/mostrarElementoFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_recycler_elementos" />
+
+    <action
+        android:id="@+id/action_mostrarElementoFragment"
+        app:destination="@id/mostrarElementoFragment" />
+    <action
+        android:id="@+id/action_nuevoElementoFragment"
+        app:destination="@id/nuevoElementoFragment" />
     <fragment
         android:id="@+id/nuevoElementoFragment"
         android:name="com.example.recyclerview.NuevoElementoFragment"
@@ -27,4 +29,10 @@
         android:name="com.example.recyclerview.MostrarElementoFragment"
         android:label="fragment_mostrar_elemento"
         tools:layout="@layout/fragment_mostrar_elemento" />
+    <fragment
+        android:id="@+id/recyclerBuscarFragment"
+        android:name="com.example.recyclerview.RecyclerBuscarFragment"
+        android:label="fragment_recycler_buscar"
+        tools:layout="@layout/fragment_recycler_buscar" />
+
 </navigation>
