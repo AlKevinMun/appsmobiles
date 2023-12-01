@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="razas">
+        <item>Draconido</item>
+        <item>Elfo</item>
+        <item>Enano</item>
+        <item>Gnomo</item>
+        <item>Humano</item>
+        <item>Mediano</item>
+        <item>Semielfo</item>
+        <item>Semiorco</item>
+        <item>Tiflin</item>
+        <item>Orco</item>
+    </string-array>
+    <string-array name="deidades">
+        <item>Branchala</item>
+        <item>Habba</item>
+        <item>Jolith</item>
+        <item>Majere</item>
+        <item>Misha</item>
+        <item>Akaviir</item>
+        <item>Solinari</item>
+        <item>Chislev</item>
+        <item>Gilean</item>
+        <item>Lunitari</item>
+        <item>Reorx</item>
+        <item>Shinare</item>
+        <item>Zivilyn</item>
+        <item>Belathau</item>
+        <item>Cerys</item>
+        <item>Morgion</item>
+        <item>Nocturnal</item>
+        <item>Nutari</item>
+        <item>Sargonnas</item>
+        <item>Takhisis</item>
+    </string-array>
+    <string-array name="clases">
+        <item>Artificiero</item>
+        <item>Bárbaro</item>
+        <item>Bardo</item>
+        <item>Brujo</item>
+        <item>Clérigo</item>
+        <item>Druida</item>
+        <item>Explorador</item>
+        <item>Guerrero</item>
+        <item>Hechizero</item>
+        <item>Mago</item>
+        <item>Monje</item>
+        <item>Paladín</item>
+        <item>Pícaro</item>
+    </string-array>
+    <string-array name="generos">
+        <item>Hombre</item>
+        <item>Mujer</item>
+        <item>Exclusion social</item>
+    </string-array>
+</resources>

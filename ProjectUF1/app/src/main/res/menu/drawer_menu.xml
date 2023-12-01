@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:backgroundTint="@color/your_color_accent">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@android:drawable/ic_lock_idle_lock"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/charactersFragment"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="Characters" />
+
+    <item
+        android:id="@+id/campaingFragment"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="Campaings" />
+</menu>
