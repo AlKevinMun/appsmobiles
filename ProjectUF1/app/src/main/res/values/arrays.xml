@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="alineaciones">
+        <item>Legal bueno</item>
+        <item>Legal neutral</item>
+        <item>Legal malvado</item>
+        <item>Neutral bueno</item>
+        <item>Neutral neutral</item>
+        <item>Neutral malvado</item>
+        <item>Caotico bueno</item>
+        <item>Caotico neutral</item>
+        <item>Caotico malvado</item>
+    </string-array>
     <string-array name="razas">
         <item>Draconido</item>
         <item>Elfo</item>

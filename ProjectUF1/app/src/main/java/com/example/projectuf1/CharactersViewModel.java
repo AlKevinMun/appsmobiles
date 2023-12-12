@@ -3,17 +3,18 @@ package com.example.projectuf1;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
-public class CharactersViewModel {
+public class CharactersViewModel extends AndroidViewModel {
     CharacterRepositorio characterRepositorio;
 
     MutableLiveData<List<Character>> listMutableLiveData = new MutableLiveData<>();
 
     public CharactersViewModel(@NonNull Application application){
-        super();
+        super(application);
 
         characterRepositorio = new CharacterRepositorio();
 

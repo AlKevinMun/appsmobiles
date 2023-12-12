@@ -14,10 +14,29 @@
         android:id="@+id/charactersFragment"
         android:name="com.example.projectuf1.CharactersFragment"
         android:label="Characters"
-        tools:layout="@layout/fragment_characters" />
+        tools:layout="@layout/fragment_characters" >
+        <action
+            android:id="@+id/action_recyclerElementosFragment_to_nuevoElementoFragment"
+            app:destination="@id/nuevoPersonajeFragment" />
+        <action
+            android:id="@+id/action_recyclerElementosFragment_to_mostrarElementoFragment"
+            app:destination="@id/mostrarPersonajeFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/campaingFragment"
         android:name="com.example.projectuf1.CampaingFragment"
         android:label="Campaing"
         tools:layout="@layout/fragment_campaing" />
+    <fragment
+        android:id="@+id/nuevoPersonajeFragment"
+        android:name="com.example.projectuf1.NewCharacterFragment"
+        android:label="Crear personaje"
+        tools:layout="@layout/fragment_nuevo_personaje" />
+    <fragment
+        android:id="@+id/mostrarPersonajeFragment"
+        android:name="com.example.projectuf1.ShowCharacterFragment"
+        android:label="Detalles de personaje"
+        tools:layout="@layout/fragment_mostrar_personaje" />
+
 </navigation>
