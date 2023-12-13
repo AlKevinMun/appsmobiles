@@ -2,25 +2,26 @@ package com.example.projectuf1;
 
 public class Character {
     String nombre;
-    int edad;
+    String edad;
     String alineacion;
-    int raza;
-    int deidad;
-    int clase;
+    String raza;
+    String deidad;
+    String clase;
 
-    int altura;
-    int peso;
-    int genero;
-    int tamaño;
+    String altura;
+    String peso;
+    String genero;
+    String tamaño;
 
-    int fuerza;
-    int destreza;
-    int constitucion;
-    int sabiduria;
-    int inteligencia;
-    int carisma;
+    String fuerza;
+    String destreza;
+    String constitucion;
+    String sabiduria;
+    String inteligencia;
+    String  carisma;
+    int aspecto;
 
-    public Character(String nombre, int edad, String alineacion, int raza, int deidad, int clase, int altura, int peso, int genero, int tamaño, int fuerza, int destreza, int constitucion, int sabiduria, int inteligencia, int carisma) {
+    public Character(String nombre, String edad, String alineacion, String raza, String deidad, String clase, String altura, String peso, String genero, String tamaño, String fuerza, String destreza, String constitucion, String sabiduria, String inteligencia, String carisma, int aspecto) {
         this.nombre = nombre;
         this.edad = edad;
         this.alineacion = alineacion;
@@ -37,37 +38,143 @@ public class Character {
         this.sabiduria = sabiduria;
         this.inteligencia = inteligencia;
         this.carisma = carisma;
+        this.aspecto = aspecto;
     }
 
-    public int getRaza() {
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEdad() {
+        return edad;
+    }
+
+    public void setEdad(String edad) {
+        this.edad = edad;
+    }
+
+    public String getAlineacion() {
+        return alineacion;
+    }
+
+    public void setAlineacion(String alineacion) {
+        this.alineacion = alineacion;
+    }
+
+    public String getRaza() {
         return raza;
     }
 
-    public int getTamaño() {
+    public void setRaza(String raza) {
+        this.raza = raza;
+    }
+
+    public String getDeidad() {
+        return deidad;
+    }
+
+    public void setDeidad(String deidad) {
+        this.deidad = deidad;
+    }
+
+    public String getClase() {
+        return clase;
+    }
+
+    public void setClase(String clase) {
+        this.clase = clase;
+    }
+
+    public String getAltura() {
+        return altura;
+    }
+
+    public void setAltura(String altura) {
+        this.altura = altura;
+    }
+
+    public String getPeso() {
+        return peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getTamaño() {
         return tamaño;
     }
 
-    public int getFuerza() {
+    public void setTamaño(String tamaño) {
+        this.tamaño = tamaño;
+    }
+
+    public String getFuerza() {
         return fuerza;
     }
 
-    public int getDestreza() {
+    public void setFuerza(String fuerza) {
+        this.fuerza = fuerza;
+    }
+
+    public String getDestreza() {
         return destreza;
     }
 
-    public int getConstitucion() {
+    public void setDestreza(String destreza) {
+        this.destreza = destreza;
+    }
+
+    public String getConstitucion() {
         return constitucion;
     }
 
-    public int getSabiduria() {
+    public void setConstitucion(String constitucion) {
+        this.constitucion = constitucion;
+    }
+
+    public String getSabiduria() {
         return sabiduria;
     }
 
-    public int getInteligencia() {
+    public void setSabiduria(String sabiduria) {
+        this.sabiduria = sabiduria;
+    }
+
+    public String getInteligencia() {
         return inteligencia;
     }
 
-    public int getCarisma() {
+    public void setInteligencia(String inteligencia) {
+        this.inteligencia = inteligencia;
+    }
+
+    public String getCarisma() {
         return carisma;
     }
+
+    public void setCarisma(String carisma) {
+        this.carisma = carisma;
+    }
+
+    public int getAspecto() {
+        return aspecto;
+    }
+
+    public void setAspecto(int aspecto) {
+        this.aspecto = aspecto;
+    }
 }
+

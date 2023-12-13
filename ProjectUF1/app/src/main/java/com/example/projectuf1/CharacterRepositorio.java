@@ -11,7 +11,7 @@ public class CharacterRepositorio {
     }
 
     CharacterRepositorio(){
-
+        characters.add(new Character("Lydiel","36","Caotico Bueno","Half-Dead","azar","Mago","167","35","Mujer","0","10","10","10","10","10","10",R.drawable.lydiel));
     }
 
     List<Character> obtener() {

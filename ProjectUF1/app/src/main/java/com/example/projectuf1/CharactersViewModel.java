@@ -13,6 +13,8 @@ public class CharactersViewModel extends AndroidViewModel {
 
     MutableLiveData<List<Character>> listMutableLiveData = new MutableLiveData<>();
 
+    MutableLiveData<Character> characterSeleccionado = new MutableLiveData<>();
+
     public CharactersViewModel(@NonNull Application application){
         super(application);
 
@@ -41,6 +43,14 @@ public class CharactersViewModel extends AndroidViewModel {
                 listMutableLiveData.setValue(characters);
             }
         });
+    }
+
+    void seleccionar(Character character){
+        characterSeleccionado.setValue(character);
+    }
+
+    MutableLiveData<Character> seleccionado(){
+        return characterSeleccionado;
     }
 
 }
