@@ -1,30 +1,44 @@
 package com.example.projectuf1;
 
-import java.util.ArrayList;
+import android.app.Application;
+
+import androidx.lifecycle.LiveData;
+
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class CharacterRepositorio {
-    List<Character> characters = new ArrayList<>();
 
-    interface Callback {
-        void cuandoFinalice(List<Character> characters);
+    CharactersBaseDeDatos.CharactersDao charactersDao;
+
+    CharacterRepositorio(Application application){
+        charactersDao = CharactersBaseDeDatos.obtenerInstancia(application).obtenerElementosDao();
     }
 
-    CharacterRepositorio(){
-        characters.add(new Character("Lydiel","36","Caotico Bueno","Half-Dead","azar","Mago","167","35","Mujer","0","10","10","10","10","10","10",R.drawable.lydiel));
+    Executor executor = Executors.newSingleThreadExecutor();
+
+
+    LiveData<List<Character>> obtener(){
+        return charactersDao.obtener();
     }
 
-    List<Character> obtener() {
-        return characters;
+
+    void insertar(Character character){
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                charactersDao.insertar(character);
+            }
+        });
     }
 
-    void insertar(Character character, Callback callback){
-        characters.add(character);
-        callback.cuandoFinalice(characters);
-    }
-
-    void eliminar(Character character, Callback callback) {
-        characters.remove(character);
-        callback.cuandoFinalice(characters);
+    void eliminar(Character character) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                charactersDao.eliminar(character);
+            }
+        });
     }
 }

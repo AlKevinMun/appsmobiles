@@ -1,6 +1,12 @@
 package com.example.projectuf1;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Character {
+    @PrimaryKey(autoGenerate = true)
+    int id;
     String nombre;
     String edad;
     String alineacion;

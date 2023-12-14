@@ -482,9 +482,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/modificador"
             android:text="Modificador"
-            app:layout_constraintTop_toBottomOf="@id/header_estadisticas"
+            app:layout_constraintTop_toBottomOf="@id/elegir_tamano"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/elegir_fuerza"
+            app:layout_constraintLeft_toRightOf="@id/header_estadisticas"
             app:layout_constraintBottom_toTopOf="@id/mod_fuerza"
             android:textColor="@color/your_color_accent" />
         <TextView
