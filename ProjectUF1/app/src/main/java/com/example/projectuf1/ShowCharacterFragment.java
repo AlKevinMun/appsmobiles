@@ -53,6 +53,12 @@ public class ShowCharacterFragment extends Fragment {
                 binding.elegirSabiduria.setText(character.sabiduria);
                 binding.elegirInteligencia.setText(character.inteligencia);
                 binding.elegirCarisma.setText(character.carisma);
+                binding.modFuerza.setText(character.modFuerza);
+                binding.modDestreza.setText(character.modDestreza);
+                binding.modConstitucion.setText(character.modConstitucion);
+                binding.modSabiduria.setText(character.modSabiduria);
+                binding.modInteligencia.setText(character.modInteligencia);
+                binding.modCarisma.setText(character.modCarisma);
                 Glide.with(ShowCharacterFragment.this).load(character.aspecto).into(binding.aspecto);
 
             }

@@ -343,7 +343,7 @@
         app:layout_constraintTop_toBottomOf="@+id/header_estadisticas"
         app:layout_constraintBottom_toTopOf="@id/elegir_destreza"
         app:layout_constraintLeft_toRightOf="@id/fuerza"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/mod_fuerza"
         android:textColor="@color/your_color_accent"
         android:textSize="16dp"
         android:layout_margin="10dp"/>
@@ -371,7 +371,7 @@
         app:layout_constraintTop_toBottomOf="@+id/elegir_fuerza"
         app:layout_constraintBottom_toTopOf="@id/elegir_constitucion"
         app:layout_constraintLeft_toRightOf="@id/destreza"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/mod_destreza"
         android:textColor="@color/your_color_accent"
         android:textSize="16dp"
         android:layout_margin="10dp"/>
@@ -399,7 +399,7 @@
         app:layout_constraintTop_toBottomOf="@+id/elegir_destreza"
         app:layout_constraintBottom_toTopOf="@id/elegir_inteligencia"
         app:layout_constraintLeft_toRightOf="@id/constitucion"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/mod_constitucion"
         android:textColor="@color/your_color_accent"
         android:textSize="16dp"
         android:layout_margin="10dp"/>
@@ -427,7 +427,7 @@
         app:layout_constraintTop_toBottomOf="@+id/elegir_constitucion"
         app:layout_constraintBottom_toTopOf="@id/elegir_sabiduria"
         app:layout_constraintLeft_toRightOf="@id/inteligencia"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/mod_inteligencia"
         android:textColor="@color/your_color_accent"
         android:textSize="16dp"
         android:layout_margin="10dp"/>
@@ -455,7 +455,7 @@
         app:layout_constraintTop_toBottomOf="@+id/elegir_inteligencia"
         app:layout_constraintBottom_toTopOf="@id/elegir_carisma"
         app:layout_constraintLeft_toRightOf="@id/sabiduria"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/mod_sabiduria"
         android:textColor="@color/your_color_accent"
         android:textSize="16dp"
         android:layout_margin="10dp"/>
@@ -483,7 +483,7 @@
         app:layout_constraintTop_toBottomOf="@+id/elegir_sabiduria"
         app:layout_constraintBottom_toTopOf="@id/header_aspecto"
         app:layout_constraintLeft_toRightOf="@id/carisma"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/mod_carisma"
         android:textColor="@color/your_color_accent"
         android:textSize="16dp"
         android:layout_margin="10dp"
@@ -500,6 +500,88 @@
         android:textColor="@color/your_color_accent"
         android:textSize="20dp"
         android:layout_margin="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/modificador"
+        android:text="Modificador"
+        app:layout_constraintTop_toBottomOf="@id/header_estadisticas"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/elegir_fuerza"
+        app:layout_constraintBottom_toTopOf="@id/mod_fuerza"
+        android:textColor="@color/your_color_accent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mod_fuerza"
+        android:text="0"
+        app:layout_constraintTop_toBottomOf="@id/modificador"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/elegir_fuerza"
+        app:layout_constraintBottom_toTopOf="@id/mod_destreza"
+        android:textSize="16dp"
+        android:layout_margin="10dp"
+        android:textColor="@color/your_color_accent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mod_destreza"
+        android:text="0"
+        app:layout_constraintTop_toBottomOf="@id/mod_fuerza"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/elegir_destreza"
+        app:layout_constraintBottom_toTopOf="@id/mod_constitucion"
+        android:textSize="16dp"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mod_constitucion"
+        android:text="0"
+        app:layout_constraintTop_toBottomOf="@id/mod_destreza"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/elegir_constitucion"
+        app:layout_constraintBottom_toTopOf="@id/mod_inteligencia"
+        android:textSize="16dp"
+        android:layout_margin="10dp"
+        android:textColor="@color/your_color_accent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mod_inteligencia"
+        android:text="0"
+        app:layout_constraintTop_toBottomOf="@id/mod_constitucion"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/elegir_inteligencia"
+        app:layout_constraintBottom_toTopOf="@id/mod_sabiduria"
+        android:textSize="16dp"
+        android:layout_margin="10dp"
+        android:textColor="@color/your_color_accent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mod_sabiduria"
+        android:text="0"
+        app:layout_constraintTop_toBottomOf="@id/mod_inteligencia"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/elegir_sabiduria"
+        app:layout_constraintBottom_toTopOf="@id/mod_carisma"
+        android:textSize="16dp"
+        android:layout_margin="10dp"
+        android:textColor="@color/your_color_accent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mod_carisma"
+        android:text="0"
+        app:layout_constraintTop_toBottomOf="@id/mod_sabiduria"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/elegir_carisma"
+        app:layout_constraintBottom_toTopOf="@id/header_aspecto"
+        android:textSize="16dp"
+        android:layout_margin="10dp"
+        android:textColor="@color/your_color_accent" />
+
     <ImageView
         android:layout_width="800px"
         android:layout_height="800px"
