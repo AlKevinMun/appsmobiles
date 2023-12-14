@@ -16,10 +16,10 @@
         android:label="Characters"
         tools:layout="@layout/fragment_characters" >
         <action
-            android:id="@+id/action_recyclerElementosFragment_to_nuevoElementoFragment"
+            android:id="@+id/action_recyclerCampaingsFragment_to_nuevaCampaingFragment"
             app:destination="@id/nuevoPersonajeFragment" />
         <action
-            android:id="@+id/action_recyclerElementosFragment_to_mostrarElementoFragment"
+            android:id="@+id/action_recyclerCampaingsFragment_to_mostrarCampaingFragment"
             app:destination="@id/mostrarPersonajeFragment" />
     </fragment>
 
@@ -27,7 +27,14 @@
         android:id="@+id/campaingFragment"
         android:name="com.example.projectuf1.CampaingFragment"
         android:label="Campaing"
-        tools:layout="@layout/fragment_campaing" />
+        tools:layout="@layout/fragment_campaing" >
+        <action
+            android:id="@+id/action_recyclerCampaingsFragment_to_nuevaCampaingFragment"
+            app:destination="@id/nuevaCampanaFragment" />
+        <action
+            android:id="@+id/action_recyclerCampaingsFragment_to_mostrarCampaingFragment"
+            app:destination="@id/mostrarCampanaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nuevoPersonajeFragment"
         android:name="com.example.projectuf1.NewCharacterFragment"
@@ -38,5 +45,15 @@
         android:name="com.example.projectuf1.ShowCharacterFragment"
         android:label="Detalles de personaje"
         tools:layout="@layout/fragment_mostrar_personaje" />
+    <fragment
+        android:id="@+id/mostrarCampanaFragment"
+        android:name="com.example.projectuf1.MostrarCampanaFragment"
+        android:label="fragment_mostrar_campana"
+        tools:layout="@layout/fragment_mostrar_campana" />
+    <fragment
+        android:id="@+id/nuevaCampanaFragment"
+        android:name="com.example.projectuf1.NuevaCampanaFragment"
+        android:label="fragment_nueva_campana"
+        tools:layout="@layout/fragment_nueva_campana" />
 
 </navigation>

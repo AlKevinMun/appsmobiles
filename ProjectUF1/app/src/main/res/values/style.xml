@@ -6,5 +6,6 @@
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/your_color_primary</item>
         <item name="colorAccent">@color/your_color_accent</item>
+        <item name="android:windowBackground">@color/your_color_primary</item>
     </style>
 </resources>

@@ -134,16 +134,16 @@ public class NewCharacterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String nombre = binding.elegirNombre.getText().toString();
-                String edad = binding.elegirEdad.getText().toString();
-                String altura = binding.elegirAltura.getText().toString();
-                String peso = binding.elegirPeso.getText().toString();
-                String tamaño = binding.elegirTamano.getText().toString();
-                String fuerza = binding.elegirFuerza.getText().toString();
-                String destreza = binding.elegirDestreza.getText().toString();
-                String constitucion = binding.elegirConstitucion.getText().toString();
-                String sabiduria = binding.elegirSabiduria.getText().toString();
-                String inteligencia = binding.elegirInteligencia.getText().toString();
-                String carisma = binding.elegirCarisma.getText().toString();
+                int edad = Integer.parseInt(binding.elegirEdad.getText().toString());
+                int altura = Integer.parseInt(binding.elegirAltura.getText().toString());
+                int peso = Integer.parseInt(binding.elegirPeso.getText().toString());
+                int tamaño = Integer.parseInt(binding.elegirTamano.getText().toString());
+                int fuerza = Integer.parseInt(binding.elegirFuerza.getText().toString());
+                int destreza = Integer.parseInt(binding.elegirDestreza.getText().toString());
+                int constitucion = Integer.parseInt(binding.elegirConstitucion.getText().toString());
+                int sabiduria = Integer.parseInt(binding.elegirSabiduria.getText().toString());
+                int inteligencia = Integer.parseInt(binding.elegirInteligencia.getText().toString());
+                int carisma = Integer.parseInt(binding.elegirCarisma.getText().toString());
                 int aspecto = R.drawable.lydiel;
 
                 elementosViewModel.insertar(new Character(nombre,edad,alineacion,raza,deidad,clase,altura,peso,genero,tamaño,fuerza,destreza,constitucion,sabiduria,inteligencia,carisma,aspecto));
