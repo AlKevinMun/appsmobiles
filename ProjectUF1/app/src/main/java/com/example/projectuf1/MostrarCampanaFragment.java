@@ -1,5 +1,7 @@
 package com.example.projectuf1;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,10 +13,10 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.bumptech.glide.Glide;
 import com.example.projectuf1.databinding.FragmentMostrarCampanaBinding;
-import com.example.projectuf1.databinding.FragmentMostrarPersonajeBinding;
 
 public class MostrarCampanaFragment extends Fragment {
     private FragmentMostrarCampanaBinding binding;
@@ -48,5 +50,46 @@ public class MostrarCampanaFragment extends Fragment {
 
             }
         });
+
+        binding.apuntarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(MostrarCampanaFragment.this);
+            }
+        });
+
     }
+
+    private void showDialog(MostrarCampanaFragment fragment) {
+        // Infla el diseño de la ventana de diálogo personalizada
+        LayoutInflater inflater = LayoutInflater.from(fragment.getContext());
+        View dialogView = inflater.inflate(R.layout.dialogo_insertar_nombre, null);
+
+        // Encuentra el EditText en la vista del diálogo
+        final EditText username = dialogView.findViewById(R.id.username);
+
+        // Crea el cuadro de diálogo
+        AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getContext());
+        builder.setView(dialogView)
+                .setTitle("Apuntarse a la campaña")
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Obtiene el texto del EditText al hacer clic en Aceptar
+                        String enteredName = username.getText().toString();
+                        binding.jugadores.setText(binding.jugadores.getText()+" "+enteredName+" -");
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Cancelar, no se realiza ninguna acción
+                    }
+                });
+
+        // Muestra el cuadro de diálogo
+        builder.create().show();
+    }
+
+
 }
