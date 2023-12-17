@@ -590,7 +590,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toTopOf="@id/crear"
-
+        app:srcCompat="@drawable/lydiel"
         />
 
     <Button
@@ -599,6 +599,7 @@
         android:id="@+id/crear"
         android:text="Crear"
         android:background="@color/your_color_accent"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/aspecto"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

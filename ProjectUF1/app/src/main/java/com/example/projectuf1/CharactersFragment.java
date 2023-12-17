@@ -61,7 +61,7 @@ public class CharactersFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     charactersViewModel.seleccionar(character);
-                    navController.navigate(R.id.action_recyclerCampaingsFragment_to_mostrarCampaingFragment);
+                    navController.navigate(R.id.action_recyclerCharactersFragment_to_mostrarCharacterFragment);
                 }
             });
         }
@@ -98,7 +98,7 @@ public class CharactersFragment extends Fragment {
         binding.irANuevoElemento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_recyclerCampaingsFragment_to_nuevaCampaingFragment);
+                navController.navigate(R.id.action_recyclerCharactersFragment_to_nuevoCharacterFragment);
             }
         });
 

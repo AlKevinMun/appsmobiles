@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/charactersFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -16,10 +16,10 @@
         android:label="Characters"
         tools:layout="@layout/fragment_characters" >
         <action
-            android:id="@+id/action_recyclerCampaingsFragment_to_nuevaCampaingFragment"
+            android:id="@+id/action_recyclerCharactersFragment_to_nuevoCharacterFragment"
             app:destination="@id/nuevoPersonajeFragment" />
         <action
-            android:id="@+id/action_recyclerCampaingsFragment_to_mostrarCampaingFragment"
+            android:id="@+id/action_recyclerCharactersFragment_to_mostrarCharacterFragment"
             app:destination="@id/mostrarPersonajeFragment" />
     </fragment>
 
@@ -48,12 +48,12 @@
     <fragment
         android:id="@+id/mostrarCampanaFragment"
         android:name="com.example.projectuf1.MostrarCampanaFragment"
-        android:label="fragment_mostrar_campana"
+        android:label="Detalles de campaña"
         tools:layout="@layout/fragment_mostrar_campana" />
     <fragment
         android:id="@+id/nuevaCampanaFragment"
         android:name="com.example.projectuf1.NuevaCampanaFragment"
-        android:label="fragment_nueva_campana"
+        android:label="Crear campaña"
         tools:layout="@layout/fragment_nueva_campana" />
 
 </navigation>

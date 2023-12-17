@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -13,36 +14,31 @@ public class CampaingViewModel extends AndroidViewModel {
 
     CampaingRepositorio campaingRepositorio;
 
-    MutableLiveData<List<Campaing>> listElementosMutableLiveData = new MutableLiveData<>();
-
     public CampaingViewModel(@NonNull Application application) {
         super(application);
 
-        campaingRepositorio = new CampaingRepositorio();
-
-        listElementosMutableLiveData.setValue(campaingRepositorio.obtener());
+        campaingRepositorio = new CampaingRepositorio(application);
     }
 
-    MutableLiveData<List<Campaing>> obtener(){
-        return listElementosMutableLiveData;
+    LiveData<List<Campaing>> obtener(){
+        return campaingRepositorio.obtener();
     }
-
     void insertar(Campaing campaing){
-        campaingRepositorio.insertar(campaing, new CampaingRepositorio.Callback() {
-            @Override
-            public void cuandoFinalice(List<Campaing> campaings) {
-                listElementosMutableLiveData.setValue(campaings);
-            }
-        });
+        campaingRepositorio.insertar(campaing);
     }
 
     void eliminar(Campaing campaing){
-        campaingRepositorio.eliminar(campaing, new CampaingRepositorio.Callback() {
-            @Override
-            public void cuandoFinalice(List<Campaing> campaings) {
-                listElementosMutableLiveData.setValue(campaings);
-            }
-        });
+        campaingRepositorio.eliminar(campaing);
+    }
+
+    MutableLiveData<Campaing> campaingSeleccionado = new MutableLiveData<>();
+
+    void seleccionar(Campaing campaing){
+        campaingSeleccionado.setValue(campaing);
+    }
+
+    MutableLiveData<Campaing> seleccionado(){
+        return campaingSeleccionado;
     }
 
 }

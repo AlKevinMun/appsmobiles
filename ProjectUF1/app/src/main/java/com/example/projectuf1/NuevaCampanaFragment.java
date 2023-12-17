@@ -34,6 +34,27 @@ public class NuevaCampanaFragment extends Fragment {
         CampaingViewModel elementosViewModel = new ViewModelProvider(requireActivity()).get(CampaingViewModel.class);
         NavController navController = Navigation.findNavController(view);
 
+        binding.crear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nombre = binding.editarNombre.getText().toString();
+                String descripcion = binding.editarDescripcion.getText().toString();
+                String master = binding.editarMaster.getText().toString();
+                int maxPlayers = Integer.parseInt(binding.editarMaxPlayers.getText().toString());
+                String playerApuntados = binding.jugadores.getText().toString();
+                String flexibilidad = binding.editarFlexibilidad.getText().toString();
+                String fechaInicio = binding.editarFecha.getText().toString();
+                String duracion = binding.editarTiempo.getText().toString();
+                String sesiones = binding.editarSesiones.getText().toString();
+                String detallesExtra = binding.editarDatos.getText().toString();
+                int mapa = R.drawable.mapa;
+
+                elementosViewModel.insertar(new Campaing(nombre, descripcion, master, maxPlayers, playerApuntados, flexibilidad, fechaInicio, duracion, sesiones, detallesExtra, mapa));
+
+                navController.popBackStack();
+            }
+        });
+
 
     }
 }

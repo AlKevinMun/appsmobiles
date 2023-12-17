@@ -14,18 +14,17 @@ import androidx.room.Update;
 
 import java.util.List;
 
-@Database(entities = {Character.class}, version = 1, exportSchema = false)
-public abstract class CharactersBaseDeDatos extends RoomDatabase {
+@Database(entities = {Campaing.class}, version = 1, exportSchema = false)
+public abstract class CampaingBaseDeDatos extends RoomDatabase {
 
-    public abstract CharactersDao obtenerElementosDao();
-    private static volatile CharactersBaseDeDatos INSTANCIA;
+    private static volatile CampaingBaseDeDatos INSTANCIA;
 
-    static CharactersBaseDeDatos obtenerInstancia(final Context context) {
+    static CampaingBaseDeDatos obtenerInstancia(final Context context) {
         if (INSTANCIA == null) {
-            synchronized (CharactersBaseDeDatos.class) {
+            synchronized (CampaingBaseDeDatos.class) {
                 if (INSTANCIA == null) {
                     INSTANCIA = Room.databaseBuilder(context,
-                                    CharactersBaseDeDatos.class, "characters.db")
+                                    CampaingBaseDeDatos.class, "campaing.db")
                             .fallbackToDestructiveMigration()
                             .build();
                 }
@@ -33,20 +32,19 @@ public abstract class CharactersBaseDeDatos extends RoomDatabase {
         }
         return INSTANCIA;
     }
-
+    public abstract CampaingDao obtenerElementosDao();
     @Dao
-    interface CharactersDao {
-        @Query("SELECT * FROM Character")
-        LiveData<List<Character>> obtener();
+    interface CampaingDao {
+        @Query("SELECT * FROM Campaing")
+        LiveData<List<Campaing>> obtener();
 
         @Insert
-        void insertar(Character character);
+        void insertar(Campaing campaing);
 
         @Update
-        void actualizar(Character character);
+        void actualizar(Campaing campaing);
 
         @Delete
-        void eliminar(Character character);
+        void eliminar(Campaing campaing);
     }
-
 }

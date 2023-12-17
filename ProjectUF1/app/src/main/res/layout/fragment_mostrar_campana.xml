@@ -1,14 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MostrarCampanaFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".NuevaCampanaFragment"
+    android:fillViewport="false">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nombre"
+            android:text="Nombre de la campaña: "
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/editar_nombre"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editar_nombre"
+            app:layout_constraintTop_toBottomOf="@id/nombre"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/descripcion"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/descripcion"
+            android:text="Descripción: "
+            app:layout_constraintTop_toBottomOf="@id/editar_nombre"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/editar_descripcion"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editar_descripcion"
+            app:layout_constraintTop_toBottomOf="@id/descripcion"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/master"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/master"
+            android:text="Master de la partida: "
+            app:layout_constraintTop_toBottomOf="@id/editar_descripcion"
+            app:layout_constraintRight_toLeftOf="@id/editar_master"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/max_players"/>
+
+        <TextView
+            android:id="@+id/editar_master"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/editar_descripcion"
+            app:layout_constraintLeft_toRightOf="@id/master"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/editar_max_players"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/max_players"
+            android:text="Maximo de jugadores: "
+            app:layout_constraintTop_toBottomOf="@id/master"
+            app:layout_constraintRight_toLeftOf="@id/editar_max_players"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/jugadores_actuales" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editar_max_players"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/editar_master"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/max_players"
+            app:layout_constraintBottom_toTopOf="@id/jugadores_actuales" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/jugadores_actuales"
+            android:text="Jugadores apuntados: "
+            app:layout_constraintTop_toBottomOf="@id/max_players"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/jugadores"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/jugadores"
+            android:text="- Jugador1 - "
+            app:layout_constraintBottom_toTopOf="@id/flexibilidad"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/jugadores_actuales" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/flexibilidad"
+            android:text="Flexibilidad: "
+            app:layout_constraintTop_toBottomOf="@id/jugadores"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/editar_flexibilidad"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editar_flexibilidad"
+            app:layout_constraintTop_toBottomOf="@id/flexibilidad"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fecha_inicio" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fecha_inicio"
+            android:text="Fecha de inicio: "
+            app:layout_constraintTop_toBottomOf="@id/editar_flexibilidad"
+            app:layout_constraintRight_toLeftOf="@id/editar_fecha"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tiempo_campana" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editar_fecha"
+            app:layout_constraintTop_toBottomOf="@id/editar_flexibilidad"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/fecha_inicio"
+            app:layout_constraintBottom_toTopOf="@id/editar_tiempo" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tiempo_campana"
+            android:text="Duracion estimada: "
+            app:layout_constraintTop_toBottomOf="@id/fecha_inicio"
+            app:layout_constraintRight_toLeftOf="@id/editar_tiempo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tiempo_sesiones" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editar_tiempo"
+            app:layout_constraintTop_toBottomOf="@id/editar_fecha"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tiempo_campana"
+            app:layout_constraintBottom_toTopOf="@id/editar_sesiones" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tiempo_sesiones"
+            android:text="Sesiones cada: "
+            app:layout_constraintTop_toBottomOf="@id/tiempo_campana"
+            app:layout_constraintRight_toLeftOf="@id/editar_sesiones"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/datos_extra" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editar_sesiones"
+            app:layout_constraintTop_toBottomOf="@id/editar_tiempo"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tiempo_sesiones"
+            app:layout_constraintBottom_toTopOf="@id/datos_extra" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/datos_extra"
+            android:text="Datos extra: "
+            app:layout_constraintTop_toBottomOf="@id/editar_tiempo"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/editar_datos" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editar_datos"
+            app:layout_constraintTop_toBottomOf="@id/datos_extra"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/mapa" />
+        <ImageView
+            android:layout_width="800px"
+            android:layout_height="800px"
+            android:id="@+id/mapa"
+            app:layout_constraintTop_toBottomOf="@id/editar_datos"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/apuntarse"
+            app:srcCompat="@drawable/mapa"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/apuntarse"
+            android:text="Apuntarse"
+            android:background="@color/your_color_accent"
+            android:textColor="#000000"
+            app:layout_constraintTop_toBottomOf="@id/mapa"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="10dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

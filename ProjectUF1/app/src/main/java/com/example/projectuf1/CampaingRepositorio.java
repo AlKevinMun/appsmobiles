@@ -1,31 +1,42 @@
 package com.example.projectuf1;
 
-import java.util.ArrayList;
+import android.app.Application;
+
+import androidx.lifecycle.LiveData;
+
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class CampaingRepositorio {
 
-    List<Campaing> campaings = new ArrayList<>();
+    CampaingBaseDeDatos.CampaingDao campaingDao;
+    Executor executor = Executors.newSingleThreadExecutor();
 
-    interface Callback {
-        void cuandoFinalice(List<Campaing> elementos);
+    CampaingRepositorio(Application application){
+        campaingDao = CampaingBaseDeDatos.obtenerInstancia(application).obtenerElementosDao();
     }
 
-    CampaingRepositorio(){
+    LiveData<List<Campaing>> obtener(){
+        return campaingDao.obtener();
     }
 
-    List<Campaing> obtener() {
-        return campaings;
+    void insertar(Campaing campaing){
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                campaingDao.insertar(campaing);
+            }
+        });
     }
 
-    void insertar(Campaing campaing, Callback callback){
-        campaings.add(campaing);
-        callback.cuandoFinalice(campaings);
-    }
-
-    void eliminar(Campaing campaing, Callback callback) {
-        campaings.remove(campaing);
-        callback.cuandoFinalice(campaings);
+    void eliminar(Campaing campaing) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                campaingDao.eliminar(campaing);
+            }
+        });
     }
 
 }
