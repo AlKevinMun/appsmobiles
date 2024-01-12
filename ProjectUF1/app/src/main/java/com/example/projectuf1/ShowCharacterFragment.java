@@ -37,28 +37,28 @@ public class ShowCharacterFragment extends Fragment {
         elementosViewModel.seleccionado().observe(getViewLifecycleOwner(), new Observer<Character>() {
             @Override
             public void onChanged(Character character) {
-                binding.elegirNombre.setText(character.nombre);
-                binding.elegirEdad.setText(character.edad);
+                binding.elegirNombre.setText(String.valueOf(character.nombre));
+                binding.elegirEdad.setText(String.valueOf(character.edad));
                 binding.spinnerAlineacion.setText(character.alineacion);
                 binding.spinnerRaza.setText(character.raza);
                 binding.spinnerDeidad.setText(character.deidad);
                 binding.spinnerClase.setText(character.clase);
-                binding.elegirAltura.setText(character.altura);
-                binding.elegirPeso.setText(character.peso);
+                binding.elegirAltura.setText(String.valueOf(character.altura));
+                binding.elegirPeso.setText(String.valueOf(character.peso));
                 binding.spinnerGenero.setText(character.genero);
-                binding.elegirTamano.setText(character.tamaño);
-                binding.elegirFuerza.setText(character.fuerza);
-                binding.elegirDestreza.setText(character.destreza);
-                binding.elegirConstitucion.setText(character.constitucion);
-                binding.elegirSabiduria.setText(character.sabiduria);
-                binding.elegirInteligencia.setText(character.inteligencia);
-                binding.elegirCarisma.setText(character.carisma);
-                binding.modFuerza.setText(character.modFuerza);
-                binding.modDestreza.setText(character.modDestreza);
-                binding.modConstitucion.setText(character.modConstitucion);
-                binding.modSabiduria.setText(character.modSabiduria);
-                binding.modInteligencia.setText(character.modInteligencia);
-                binding.modCarisma.setText(character.modCarisma);
+                binding.elegirTamano.setText(String.valueOf(character.tamaño));
+                binding.elegirFuerza.setText(String.valueOf(character.fuerza));
+                binding.elegirDestreza.setText(String.valueOf(character.destreza));
+                binding.elegirConstitucion.setText(String.valueOf(character.constitucion));
+                binding.elegirSabiduria.setText(String.valueOf(character.sabiduria));
+                binding.elegirInteligencia.setText(String.valueOf(character.inteligencia));
+                binding.elegirCarisma.setText(String.valueOf(character.carisma));
+                binding.modFuerza.setText(String.valueOf(character.modFuerza));
+                binding.modDestreza.setText(String.valueOf(character.modDestreza));
+                binding.modConstitucion.setText(String.valueOf(character.modConstitucion));
+                binding.modSabiduria.setText(String.valueOf(character.modSabiduria));
+                binding.modInteligencia.setText(String.valueOf(character.modInteligencia));
+                binding.modCarisma.setText(String.valueOf(character.modCarisma));
                 Glide.with(ShowCharacterFragment.this).load(character.aspecto).into(binding.aspecto);
 
             }

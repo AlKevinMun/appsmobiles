@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "168861044764",
+    "project_id": "socialdnd-c4d0b",
+    "storage_bucket": "socialdnd-c4d0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168861044764:android:0aebcca6a5629118144fd9",
+        "android_client_info": {
+          "package_name": "com.example.socialdnd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168861044764-n2ecgnfi4q0er892b3ntiih8h9n09itn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.socialdnd",
+            "certificate_hash": "5edb345e22e2607e233c1859bc902e3992c5a8d9"
+          }
+        },
+        {
+          "client_id": "168861044764-9ng9tmvbgo5j2g8h505b254hulpnjnqj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDzMpUnbEpM-nC-N4uVHZJcCwhCUiob_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168861044764-9ng9tmvbgo5j2g8h505b254hulpnjnqj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
