@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import io.reactivex.rxjava3.schedulers.SchedulerRunnableIntrospection;
+
 
 public class NewPostFragment extends Fragment {
 
@@ -70,7 +72,22 @@ public class NewPostFragment extends Fragment {
     private void guardarEnFirestore(String postContent) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        Post post = new Post(user.getUid(), user.getDisplayName(), user.getPhotoUrl().toString(), postContent);
+        String photo;
+        String displayName = user.getDisplayName();
+
+        if (user.getPhotoUrl() == null){
+            photo = null;
+        }
+        else {
+            photo = user.getPhotoUrl().toString();
+        }
+        if (user.getDisplayName() == null){
+            displayName = user.getEmail().toString();
+        }
+        else{
+            displayName = user.getDisplayName().toString();
+        }
+        Post post = new Post(user.getUid(), displayName, photo, postContent);
 
         FirebaseFirestore.getInstance().collection("posts")
                 .add(post)

@@ -66,11 +66,20 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
                 if(user != null){
-                    Glide.with(MainActivity.this)
-                            .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
-                            .circleCrop()
-                            .into(photo);
-                    name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+                    if(user.getPhotoUrl() == null){
+                        photo.setImageResource(R.drawable.pfp);
+                    } else {
+                        Glide.with(MainActivity.this)
+                                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
+                                .circleCrop()
+                                .into(photo);
+                    }
+                    if(user.getDisplayName().isEmpty()){
+                        name.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                    }
+                    else {
+                        name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+                    }
                     email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                 }
             }

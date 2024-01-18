@@ -72,7 +72,12 @@ public class homeFragment extends Fragment {
 
         @Override
         protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull final Post post) {
-            Glide.with(getContext()).load(post.authorPhotoUrl).circleCrop().into(holder.authorPhotoImageView);
+            if (post.authorPhotoUrl == null){
+                holder.authorPhotoImageView.setImageResource(R.drawable.pfp);
+            }
+            else{
+                Glide.with(getContext()).load(post.authorPhotoUrl).circleCrop().into(holder.authorPhotoImageView);
+            }
             holder.authorTextView.setText(post.author);
             holder.contentTextView.setText(post.content);
 
