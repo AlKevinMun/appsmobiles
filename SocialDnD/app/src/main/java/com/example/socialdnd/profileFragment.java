@@ -42,10 +42,22 @@ public class profileFragment extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if(user != null){
-            displayNameTextView.setText(user.getDisplayName());
+            String name = user.getEmail().split("@")[0].toString();
+            if (user.getDisplayName() != null){
+                displayNameTextView.setText(user.getDisplayName());
+            }
+            else {
+                displayNameTextView.setText(name);
+            }
             emailTextView.setText(user.getEmail());
+            if (user.getPhotoUrl() == null){
+                Glide.with(requireView()).load(R.drawable.pfp).circleCrop().into(photoImageView);
+            } else {
+                Glide.with(requireView()).load(user.getPhotoUrl()).circleCrop().into(photoImageView);
+            }
+        }
+        else{
 
-            Glide.with(requireView()).load(user.getPhotoUrl()).into(photoImageView);
         }
     }
 }

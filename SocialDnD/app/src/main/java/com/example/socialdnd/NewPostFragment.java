@@ -122,7 +122,7 @@ public class NewPostFragment extends Fragment {
         else{
             displayName = user.getDisplayName().toString();
         }
-        Post post = new Post(user.getUid(), displayName, photo, postContent, mediaUrl, mediaTipo);
+        Post post = new Post(user.getUid(), displayName, photo, postContent, mediaUrl, mediaTipo,System.currentTimeMillis());
         FirebaseFirestore.getInstance().collection("posts")
                 .add(post)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

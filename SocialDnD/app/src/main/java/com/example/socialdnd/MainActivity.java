@@ -68,13 +68,14 @@ public class MainActivity extends AppCompatActivity {
                 if(user != null){
                     if(user.getPhotoUrl() == null){
                         photo.setImageResource(R.drawable.pfp);
+                        Glide.with(MainActivity.this).load(R.drawable.pfp).circleCrop().into(photo);
                     } else {
                         Glide.with(MainActivity.this)
                                 .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
                                 .circleCrop()
                                 .into(photo);
                     }
-                    if(user.getDisplayName().isEmpty()){
+                    if(user.getDisplayName() == null){
                         name.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                     }
                     else {
