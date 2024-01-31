@@ -7,18 +7,18 @@ public class User {
     private String email;
     private String name;
     private String password;
-    private Uri mediaUri;
+    private String mediaUri;
     private String UID;
 
     public User() {
         // Necesario para la deserialización desde Firestore
     }
 
-    public User(String email, String password, String UID) {
+    public User(String email, String password, String UID, String mediaUri) {
         this.email = email;
         this.name = getName(email);
         this.password = password;
-        this.mediaUri = null;
+        this.mediaUri = mediaUri;
         this.UID = UID;
     }
 
@@ -53,12 +53,12 @@ public class User {
     }
 
     @PropertyName("mediaUri")
-    public Uri getMediaUri() {
+    public String getMediaUri() {
         return mediaUri;
     }
 
     @PropertyName("mediaUri")
-    public void setMediaUri(Uri mediaUri) {
+    public void setMediaUri(String mediaUri) {
         this.mediaUri = mediaUri;
     }
 

@@ -2,36 +2,43 @@ package com.example.socialdnd;
 
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class profileFragment extends Fragment {
 
     ImageView photoImageView;
     TextView displayNameTextView, emailTextView;
-    Button editProfile;
+    Button editProfile, saveData, editPhoto;
     private View rootView;
+    private String userName, userEmail;
+    public AppViewModel appViewModel;
+    String mediaTipo;
 
 
     public profileFragment() {}
@@ -52,9 +59,12 @@ public class profileFragment extends Fragment {
         displayNameTextView = view.findViewById(R.id.displayNameTextView);
         emailTextView = view.findViewById(R.id.emailTextView);
         editProfile = view.findViewById(R.id.editProfile);
+        saveData = view.findViewById(R.id.enviar);
+        editPhoto = view.findViewById(R.id.editPhoto);
+        appViewModel = new ViewModelProvider(requireActivity()).get(AppViewModel.class);
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
 
         if(user != null){
             String name = user.getEmail().split("@")[0].toString();
@@ -70,11 +80,90 @@ public class profileFragment extends Fragment {
             } else {
                 Glide.with(requireView()).load(user.getPhotoUrl()).circleCrop().into(photoImageView);
             }
+            DocumentReference userFromFirebase = FirebaseFirestore.getInstance().collection("users").document(user.getUid());
+            userFromFirebase.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    User usuario = documentSnapshot.toObject(User.class);
+
+                    displayNameTextView.setText(usuario.getName());
+                    emailTextView.setText(usuario.getEmail());
+                    Glide.with(requireView()).load(usuario.getMediaUri()).circleCrop().into(photoImageView);
+                }
+            });
+
         }
         else{
 
         }
 
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Cambiar TextView 1 a EditText
+                convertToEditText(displayNameTextView);
+
+                // Cambiar TextView 2 a EditText
+                convertToEditText(emailTextView);
+                saveData.setVisibility(View.VISIBLE);
+                editPhoto.setVisibility(View.VISIBLE);
+                editProfile.setVisibility(View.GONE);
+            }
+        });
+
+        saveData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtener referencias a los EditText desde el rootView
+                EditText displayNameEditText = rootView.findViewById(R.id.displayNameTextView);
+                EditText emailEditText = rootView.findViewById(R.id.emailTextView);
+
+                // Guardar los cambios en las variables locales
+                userName = displayNameEditText.getText().toString();
+                userEmail = emailEditText.getText().toString();
+
+                // Puedes imprimir o realizar otras acciones con los textos guardados
+                // Por ejemplo, imprimir en el Log
+                Log.d("MainActivity", "Texto guardado 1: " + userName);
+                Log.d("MainActivity", "Texto guardado 2: " + userEmail);
+            }
+        });
+        editPhoto.setOnClickListener(v -> seleccionarImagen());
+
+    }
+
+
+    private void convertToEditText(View view) {
+        if (view instanceof TextView) {
+            TextView textView = (TextView) view;
+            // Obtener el texto actual
+            String text = textView.getText().toString();
+
+            // Crear un nuevo EditText con el mismo texto
+            EditText editText = new EditText(getContext());
+            editText.setText(text);
+
+            // Copiar propiedades del TextView al EditText
+            editText.setLayoutParams(textView.getLayoutParams());
+            editText.setId(textView.getId());
+            editText.setPadding(textView.getPaddingLeft(), textView.getPaddingTop(),
+                    textView.getPaddingRight(), textView.getPaddingBottom());
+
+            // Obtener el contenedor principal y reemplazar la vista
+            ViewGroup parentLayout = (ViewGroup) textView.getParent();
+            int index = parentLayout.indexOfChild(textView);
+            parentLayout.removeView(textView);
+            parentLayout.addView(editText, index);
+        }
+    }
+    private final ActivityResultLauncher<String> galeria =
+            registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
+                appViewModel.setMediaSeleccionado(uri, mediaTipo);
+            });
+
+    private void seleccionarImagen() {
+        mediaTipo = "image";
+        galeria.launch("image/*");
     }
 
     private void mostrarSnackbar(String mensaje) {

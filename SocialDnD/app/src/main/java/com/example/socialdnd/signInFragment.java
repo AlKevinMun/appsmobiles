@@ -150,9 +150,9 @@ public class signInFragment extends Fragment {
                         if (task.isSuccessful()) {
                             Log.e("ABCD", "signInWithCredential:success");
                             actualizarUI(mAuth.getCurrentUser());
-                            User user = new User(mAuth.getCurrentUser().getEmail(),passwordEditText.getText().toString(),mAuth.getCurrentUser().getUid());
-                            FirebaseFirestore.getInstance().collection("users")
-                                    .add(user);
+                            User user = new User(mAuth.getCurrentUser().getEmail(),passwordEditText.getText().toString(),mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getPhotoUrl().toString());
+                            //Hacer un if para comprobar si ya existe o no
+                            FirebaseFirestore.getInstance().collection("users").document(user.getUID()).set(user);
                         } else {
                             Log.e("ABCD", "signInWithCredential:failure", task.getException());
                             signInProgressBar.setVisibility(View.GONE);

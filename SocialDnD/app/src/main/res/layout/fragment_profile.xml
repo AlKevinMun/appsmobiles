@@ -21,4 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Editar perfil"/>
+    <Button
+        android:id="@+id/editPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cambiar imagen"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/enviar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enviar Cambio"
+        android:visibility="gone"/>
 </LinearLayout>

@@ -76,9 +76,8 @@ public class registerFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             actualizarUI(mAuth.getCurrentUser());
-                            User user = new User(mAuth.getCurrentUser().getEmail(),passwordEditText.getText().toString(),mAuth.getCurrentUser().getUid());
-                            FirebaseFirestore.getInstance().collection("users")
-                                    .add(user);
+                            User user = new User(mAuth.getCurrentUser().getEmail(),passwordEditText.getText().toString(),mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getPhotoUrl().toString());
+                            FirebaseFirestore.getInstance().collection("users").document(user.getUID()).set(user);
 
                         } else {
                             Snackbar.make(requireView(), "Error: " + task.getException(), Snackbar.LENGTH_LONG).show();
