@@ -16,4 +16,9 @@
         android:id="@+id/emailTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/editProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Editar perfil"/>
 </LinearLayout>

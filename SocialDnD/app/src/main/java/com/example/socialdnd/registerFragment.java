@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -16,11 +17,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class registerFragment extends Fragment {
 
@@ -28,6 +32,7 @@ public class registerFragment extends Fragment {
     private FirebaseAuth mAuth;
     private EditText emailEditText, passwordEditText;
     private Button registerButton;
+    public AppViewModel appViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +44,9 @@ public class registerFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        appViewModel = new ViewModelProvider(requireActivity()).get(AppViewModel.class);
+
 
         navController = Navigation.findNavController(view);
         emailEditText = view.findViewById(R.id.emailEditText);
@@ -68,6 +76,10 @@ public class registerFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             actualizarUI(mAuth.getCurrentUser());
+                            User user = new User(mAuth.getCurrentUser().getEmail(),passwordEditText.getText().toString(),mAuth.getCurrentUser().getUid());
+                            FirebaseFirestore.getInstance().collection("users")
+                                    .add(user);
+
                         } else {
                             Snackbar.make(requireView(), "Error: " + task.getException(), Snackbar.LENGTH_LONG).show();
 
@@ -75,6 +87,7 @@ public class registerFragment extends Fragment {
                         registerButton.setEnabled(true);
                     }
                 });
+
 
     }
 

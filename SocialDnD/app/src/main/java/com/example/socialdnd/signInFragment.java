@@ -31,6 +31,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class signInFragment extends Fragment {
 
@@ -149,6 +150,9 @@ public class signInFragment extends Fragment {
                         if (task.isSuccessful()) {
                             Log.e("ABCD", "signInWithCredential:success");
                             actualizarUI(mAuth.getCurrentUser());
+                            User user = new User(mAuth.getCurrentUser().getEmail(),passwordEditText.getText().toString(),mAuth.getCurrentUser().getUid());
+                            FirebaseFirestore.getInstance().collection("users")
+                                    .add(user);
                         } else {
                             Log.e("ABCD", "signInWithCredential:failure", task.getException());
                             signInProgressBar.setVisibility(View.GONE);
