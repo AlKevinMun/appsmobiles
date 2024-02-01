@@ -12,6 +12,7 @@ public class Post {
     public String mediaType;
     public Long timeStamp;
     public Map<String, Boolean> likes = new HashMap<>();
+    public Map<String, Boolean> repost = new HashMap<>();
 
     // Constructor vacio requerido por Firestore
 

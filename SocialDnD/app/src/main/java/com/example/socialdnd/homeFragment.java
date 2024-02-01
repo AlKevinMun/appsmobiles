@@ -108,6 +108,19 @@ public class homeFragment extends Fragment {
                                 FieldValue.delete() : true);
             });
 
+            // Gestion de repost
+            if(post.repost.containsKey(uid))
+                holder.repostImageView.setImageResource(R.drawable.repost_on);
+            else
+                holder.repostImageView.setImageResource(R.drawable.repost_off);
+            holder.numRepostTextView.setText(String.valueOf(post.repost.size()));
+            holder.repostImageView.setOnClickListener(view -> {
+                FirebaseFirestore.getInstance().collection("posts")
+                        .document(postKey)
+                        .update("repost."+uid, post.repost.containsKey(uid) ?
+                                FieldValue.delete() : true);
+            });
+
             // Miniatura de media
             if (post.mediaUrl != null) {
                 holder.mediaImageView.setVisibility(View.VISIBLE);
@@ -151,8 +164,8 @@ public class homeFragment extends Fragment {
         }
 
         class PostViewHolder extends RecyclerView.ViewHolder {
-            ImageView authorPhotoImageView, likeImageView, mediaImageView, deleteImageView;
-            TextView authorTextView, contentTextView, numLikesTextView, timeTextView;
+            ImageView authorPhotoImageView, likeImageView, mediaImageView, deleteImageView, repostImageView;
+            TextView authorTextView, contentTextView, numLikesTextView, timeTextView, numRepostTextView;
             PostViewHolder(@NonNull View itemView) {
                 super(itemView);
                 authorPhotoImageView = itemView.findViewById(R.id.photoImageView);
@@ -163,6 +176,8 @@ public class homeFragment extends Fragment {
                 numLikesTextView = itemView.findViewById(R.id.numLikesTextView);
                 timeTextView = itemView.findViewById(R.id.timeTextView);
                 deleteImageView = itemView.findViewById(R.id.deleteImageView);
+                repostImageView = itemView.findViewById(R.id.repostImageView);
+                numRepostTextView = itemView.findViewById(R.id.numRepostTextView);
             }
         }
     }

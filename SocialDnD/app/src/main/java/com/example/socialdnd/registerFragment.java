@@ -76,7 +76,7 @@ public class registerFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             actualizarUI(mAuth.getCurrentUser());
-                            User user = new User(mAuth.getCurrentUser().getEmail(),passwordEditText.getText().toString(),mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getPhotoUrl().toString());
+                            User user = new User(mAuth.getCurrentUser().getEmail(),passwordEditText.getText().toString(),mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getPhotoUrl()!=null ? mAuth.getCurrentUser().getPhotoUrl().toString():"https://cdn.discordapp.com/attachments/1087188734711173130/1202591922347057152/F6KvBYeXAAAq39T.png?ex=65ce0401&is=65bb8f01&hm=5a0eb1a4aa79435e6efede9fb5b1781299c2627535328f797fcfc121e6d6ff01&".toString());
                             FirebaseFirestore.getInstance().collection("users").document(user.getUID()).set(user);
 
                         } else {

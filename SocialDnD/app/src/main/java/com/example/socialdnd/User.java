@@ -21,6 +21,12 @@ public class User {
         this.mediaUri = mediaUri;
         this.UID = UID;
     }
+    public User(String email,String password,String UID, String mediaUri, String name) {
+        this.email = email;
+        this.name = name;
+        this.mediaUri = mediaUri;
+        this.UID = UID;
+    }
 
     @PropertyName("email")
     public String getEmail() {

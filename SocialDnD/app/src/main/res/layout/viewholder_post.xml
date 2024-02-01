@@ -50,22 +50,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <ImageView
-                    android:id="@+id/comentImageView"
-                    app:srcCompat="@drawable/comentario"
-                    android:adjustViewBounds="true"
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"/>
-                <TextView
-                    android:id="@+id/numComentTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_gravity="center_vertical"
-                    android:text="200K"/>
-                <ImageView
                     android:id="@+id/repostImageView"
-                    app:srcCompat="@drawable/repost"
+                    app:srcCompat="@drawable/repost_on"
                     android:adjustViewBounds="true"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"

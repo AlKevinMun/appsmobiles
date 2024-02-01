@@ -1,5 +1,6 @@
 package com.example.socialdnd;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -8,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,6 +42,9 @@ public class profileFragment extends Fragment {
     private String userName, userEmail;
     public AppViewModel appViewModel;
     String mediaTipo;
+    Uri mediaUri;
+    private FirebaseAuth mAuth;
+
 
 
     public profileFragment() {}
@@ -62,7 +68,8 @@ public class profileFragment extends Fragment {
         saveData = view.findViewById(R.id.enviar);
         editPhoto = view.findViewById(R.id.editPhoto);
         appViewModel = new ViewModelProvider(requireActivity()).get(AppViewModel.class);
-
+        mAuth = FirebaseAuth.getInstance();
+        NavController navController = Navigation.findNavController(view);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -103,8 +110,6 @@ public class profileFragment extends Fragment {
                 // Cambiar TextView 1 a EditText
                 convertToEditText(displayNameTextView);
 
-                // Cambiar TextView 2 a EditText
-                convertToEditText(emailTextView);
                 saveData.setVisibility(View.VISIBLE);
                 editPhoto.setVisibility(View.VISIBLE);
                 editProfile.setVisibility(View.GONE);
@@ -116,19 +121,24 @@ public class profileFragment extends Fragment {
             public void onClick(View v) {
                 // Obtener referencias a los EditText desde el rootView
                 EditText displayNameEditText = rootView.findViewById(R.id.displayNameTextView);
-                EditText emailEditText = rootView.findViewById(R.id.emailTextView);
 
                 // Guardar los cambios en las variables locales
                 userName = displayNameEditText.getText().toString();
-                userEmail = emailEditText.getText().toString();
+                userEmail = emailTextView.getText().toString();
 
-                // Puedes imprimir o realizar otras acciones con los textos guardados
-                // Por ejemplo, imprimir en el Log
-                Log.d("MainActivity", "Texto guardado 1: " + userName);
-                Log.d("MainActivity", "Texto guardado 2: " + userEmail);
+                User user = new User(userEmail,null,mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getPhotoUrl().toString(),userName);
+                FirebaseFirestore.getInstance().collection("users").document(user.getUID()).set(user);
+                navController.navigate(R.id.profileFragment);
             }
         });
-        editPhoto.setOnClickListener(v -> seleccionarImagen());
+        view.findViewById(R.id.editPhoto).setOnClickListener(v -> seleccionarImagen());
+
+        appViewModel.mediaSeleccionado.observe(getViewLifecycleOwner(), media -> {
+            this.mediaTipo = media.tipo;
+            this.mediaUri = media.uri;
+            Glide.with(this).load(media.uri).into((ImageView) view.findViewById(R.id.previsualizacion));
+        });
+
 
     }
 
@@ -156,6 +166,7 @@ public class profileFragment extends Fragment {
             parentLayout.addView(editText, index);
         }
     }
+
     private final ActivityResultLauncher<String> galeria =
             registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
                 appViewModel.setMediaSeleccionado(uri, mediaTipo);
