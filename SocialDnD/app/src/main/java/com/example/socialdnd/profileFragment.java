@@ -188,11 +188,6 @@ public class profileFragment extends Fragment {
                 .addOnSuccessListener(url -> selectPhoto(url.toString()));
     }
 
-
-    private void mostrarSnackbar(String mensaje) {
-        Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
-    }
-
     private void selectPhoto(String uri){
         userPhoto = uri;
         User user = new User(userEmail,null,mAuth.getCurrentUser().getUid(),userPhoto,userName);
