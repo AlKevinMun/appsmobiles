@@ -25,6 +25,9 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -37,6 +40,7 @@ public class homeFragment extends Fragment {
 
     NavController navController;
     public AppViewModel appViewModel;
+    FirebaseAuth firebaseAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,14 +88,19 @@ public class homeFragment extends Fragment {
 
         @Override
         protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull final Post post) {
-            if (post.authorPhotoUrl == null){
-                Glide.with(requireView()).load(R.drawable.pfp).circleCrop().into(holder.authorPhotoImageView);
-            }
-            else{
-                Glide.with(getContext()).load(post.authorPhotoUrl).circleCrop().into(holder.authorPhotoImageView);
-            }
-            holder.authorTextView.setText(post.author);
             holder.contentTextView.setText(post.content);
+
+            DocumentReference userFromFirebase = FirebaseFirestore.getInstance().collection("users").document(post.uid);
+            userFromFirebase.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    User usuario = documentSnapshot.toObject(User.class);
+
+                    holder.authorTextView.setText(usuario.getName());
+                    Glide.with(requireView()).load(usuario.getMediaUri()).circleCrop().into(holder.authorPhotoImageView);
+                }
+            });
+
 
             // Gestion de likes
             final String postKey = getSnapshots().getSnapshot(position).getId();
@@ -180,7 +189,10 @@ public class homeFragment extends Fragment {
                 numRepostTextView = itemView.findViewById(R.id.numRepostTextView);
             }
         }
+
     }
+
+
 
     private void showAlertDialog(String postKey) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());

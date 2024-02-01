@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -21,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.socialdnd.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
@@ -64,24 +67,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user == null){
 
-                if(user != null){
-                    if(user.getPhotoUrl() == null){
-                        photo.setImageResource(R.drawable.pfp);
-                        Glide.with(MainActivity.this).load(R.drawable.pfp).circleCrop().into(photo);
-                    } else {
-                        Glide.with(MainActivity.this)
-                                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
-                                .circleCrop()
-                                .into(photo);
-                    }
-                    if(user.getDisplayName() == null){
-                        name.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                    }
-                    else {
-                        name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-                    }
-                    email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                }
+                else {
+                    DocumentReference userFromFirebase = FirebaseFirestore.getInstance().collection("users").document(user.getUid());
+                    userFromFirebase.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            User usuario = documentSnapshot.toObject(User.class);
+
+                            name.setText(usuario.getName());
+                            email.setText(usuario.getEmail());
+                            Glide.with(MainActivity.this).load(usuario.getMediaUri()).circleCrop().into(photo);
+                        }
+                    });
                 }
             }
         });

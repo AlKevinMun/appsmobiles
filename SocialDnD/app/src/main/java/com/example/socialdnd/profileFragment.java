@@ -32,6 +32,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.storage.FirebaseStorage;
+
+import java.util.UUID;
 
 public class profileFragment extends Fragment {
 
@@ -39,7 +42,7 @@ public class profileFragment extends Fragment {
     TextView displayNameTextView, emailTextView;
     Button editProfile, saveData, editPhoto;
     private View rootView;
-    private String userName, userEmail;
+    private String userName, userEmail, userPhoto;
     public AppViewModel appViewModel;
     String mediaTipo;
     Uri mediaUri;
@@ -125,10 +128,10 @@ public class profileFragment extends Fragment {
                 // Guardar los cambios en las variables locales
                 userName = displayNameEditText.getText().toString();
                 userEmail = emailTextView.getText().toString();
+                pujaIguardarEnFirestore(userName);
 
-                User user = new User(userEmail,null,mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getPhotoUrl().toString(),userName);
-                FirebaseFirestore.getInstance().collection("users").document(user.getUID()).set(user);
                 navController.navigate(R.id.profileFragment);
+
             }
         });
         view.findViewById(R.id.editPhoto).setOnClickListener(v -> seleccionarImagen());
@@ -136,7 +139,7 @@ public class profileFragment extends Fragment {
         appViewModel.mediaSeleccionado.observe(getViewLifecycleOwner(), media -> {
             this.mediaTipo = media.tipo;
             this.mediaUri = media.uri;
-            Glide.with(this).load(media.uri).into((ImageView) view.findViewById(R.id.previsualizacion));
+            Glide.with(this).load(media.uri).circleCrop().into((ImageView) view.findViewById(R.id.photoImageView));
         });
 
 
@@ -177,8 +180,23 @@ public class profileFragment extends Fragment {
         galeria.launch("image/*");
     }
 
+    private void pujaIguardarEnFirestore(final String postText) {
+        FirebaseStorage.getInstance().getReference(mediaTipo + "/" +
+                        UUID.randomUUID())
+                .putFile(mediaUri) .continueWithTask(task ->
+                        task.getResult().getStorage().getDownloadUrl())
+                .addOnSuccessListener(url -> selectPhoto(url.toString()));
+    }
+
+
     private void mostrarSnackbar(String mensaje) {
         Snackbar.make(rootView, mensaje, Snackbar.LENGTH_LONG).show();
     }
 
+    private void selectPhoto(String uri){
+        userPhoto = uri;
+        User user = new User(userEmail,null,mAuth.getCurrentUser().getUid(),userPhoto,userName);
+        FirebaseFirestore.getInstance().collection("users").document(user.getUID()).set(user);
+
+    }
 }
