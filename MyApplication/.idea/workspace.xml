@@ -9,9 +9,36 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31cf2a18-a5b5-4d11-984d-2e8b47c1df96" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../pruebasCamara/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pruebasCamara/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pruebasCamara/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pruebasCamara/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="31cf2a18-a5b5-4d11-984d-2e8b47c1df96" name="Changes" comment="Empezando UF3">
+      <change afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/Bird.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/GameOverScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/GameScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/MainMenuScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/Pipe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/apk/debug/android-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/apk/debug/android-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/badlogic.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/compressed_assets/debug/out/assets/badlogic.jpg.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/dex/debug/mergeDexDebug/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/dex/debug/mergeDexDebug/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/external_libs_dex/debug/mergeExtDexDebug/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/external_libs_dex/debug/mergeExtDexDebug/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/271YFBTRneav04yAAr+8a794O+o=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/271YFBTRneav04yAAr+8a794O+o=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/javac/debug/classes/com/mygdx/game/AndroidLauncher.class" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/javac/debug/classes/com/mygdx/game/AndroidLauncher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/project_dex_archive/debug/out/com/mygdx/game/AndroidLauncher.dex" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/project_dex_archive/debug/out/com/mygdx/game/AndroidLauncher.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/com/mygdx/game/AndroidLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/com/mygdx/game/AndroidLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/badlogic.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/.transforms/daae13806cce29093405bdda0a5400e4/transformed/main/com/mygdx/game/MyGdxGame.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/MyGdxGame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/MyGdxGame.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +53,30 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="MyApplication" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -128,6 +179,19 @@
       <option name="presentableId" value="Default" />
       <updated>1707414012470</updated>
     </task>
+    <task id="LOCAL-00001" summary="Empezando UF3">
+      <option name="closed" value="true" />
+      <created>1707414967674</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707414967674</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Empezando UF3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Empezando UF3" />
   </component>
 </project>
