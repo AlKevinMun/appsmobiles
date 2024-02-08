@@ -99,8 +99,9 @@ public class GameScreen implements Screen {
         {
             game.manager.get("fail.wav", Sound.class).play();
             game.lastScore = (int)score;
-            if(game.lastScore > game.topScore)
+            if(game.lastScore > game.topScore) {
                 game.topScore = game.lastScore;
+            }
             game.setScreen(new GameOverScreen(game));
             dispose();
         }
