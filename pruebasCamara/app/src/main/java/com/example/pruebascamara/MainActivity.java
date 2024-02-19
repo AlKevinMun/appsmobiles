@@ -1,6 +1,10 @@
+package com.example.pruebascamara;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.OptIn;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.CameraSelector;
+import androidx.camera.core.ExperimentalGetImage;
 import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.ImageProxy;
 import androidx.camera.core.Preview;
@@ -18,12 +22,16 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.pruebascamara.R;
+import com.google.android.gms.tasks.Task;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.google.mlkit.vision.barcode.Barcode;
+import com.google.mlkit.vision.barcode.*;
 import com.google.mlkit.vision.barcode.BarcodeScanner;
 import com.google.mlkit.vision.barcode.BarcodeScanning;
+import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.common.InputImage;
+import androidx.camera.view.PreviewView;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -31,6 +39,7 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    private static final int REQUEST_CODE_PERMISSIONS =  10;
 
     private PreviewView previewView;
     private ProcessCameraProvider cameraProvider;
@@ -69,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private void bindCameraUseCases() {
         // Configure the preview use case
         Preview preview = new Preview.Builder().build();
-        preview.setSurfaceProvider(previewView.createSurfaceProvider());
+        preview.setSurfaceProvider(previewView.getSurfaceProvider());
 
         // Configure the image analysis use case
         ImageAnalysis imageAnalysis = new ImageAnalysis.Builder()
@@ -77,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         imageAnalysis.setAnalyzer(cameraExecutor, new ImageAnalysis.Analyzer() {
-            @Override
+            @OptIn(markerClass = ExperimentalGetImage.class) @Override
             public void analyze(@NonNull ImageProxy image) {
                 InputImage inputImage = InputImage.fromMediaImage(image.getImage(), image.getImageInfo().getRotationDegrees());
                 BarcodeScanner scanner = BarcodeScanning.getClient();

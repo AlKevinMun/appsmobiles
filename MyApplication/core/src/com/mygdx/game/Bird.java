@@ -43,9 +43,6 @@ public class Bird extends Game {
 
 		topScore = 0;
 		lastScore = 0;
-
-
-
 	}
 	public void render() {
 		super.render(); // important!
