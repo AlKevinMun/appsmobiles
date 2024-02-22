@@ -1,19 +1,27 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class Pipe extends Actor {
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class Coin extends Actor {
+    private Texture coinTexture;
     Rectangle bounds;
-    boolean upsideDown;
     AssetManager manager;
     private float speedX;
-    Pipe()
-    {
-        setSize(64, 230);
+
+    public Coin() {
+        //coinTexture = new Texture(Gdx.files.internal("coins.png"));
+        setSize(48, 48);
         bounds = new Rectangle();
         setVisible(false);
         speedX = -200;
@@ -22,7 +30,7 @@ public class Pipe extends Actor {
     public void act(float delta) {
         moveBy(speedX * delta, 0);
         bounds.set(getX(), getY(), getWidth(), getHeight());
-        if (!isVisible())
+        if(!isVisible())
             setVisible(true);
         if (getX() < -64)
             remove();
@@ -30,22 +38,16 @@ public class Pipe extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        batch.draw( manager.get( upsideDown ? "pipe_up.png" :
-                "pipe_down.png", Texture.class), getX(), getY() );
+        batch.draw( manager.get("coins.png", Texture.class), getX(), getY() );
     }
+
     public Rectangle getBounds() {
         return bounds;
     }
-    public boolean isUpsideDown() {
-        return upsideDown;
-    }
-    public void setUpsideDown(boolean upsideDown) {
-        this.upsideDown = upsideDown;
-    }
+
     public void setManager(AssetManager manager) {
         this.manager = manager;
     }
-
     public float getSpeedX() {
         return speedX;
     }
