@@ -3,8 +3,13 @@
     android:backgroundTint="@color/your_color_accent">
     <item
         android:id="@+id/homeFragment"
-        android:icon="@android:drawable/ic_lock_idle_lock"
+        android:icon="@drawable/home_24"
         android:title="Home"/>
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/baseline_face_24"
+        android:title="Profile"/>
 
     <item
         android:id="@+id/charactersFragment"
@@ -15,4 +20,14 @@
         android:id="@+id/campaingFragment"
         android:icon="@android:drawable/ic_dialog_map"
         android:title="Campaings" />
+
+    <item
+        android:id="@+id/configFragment"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Configuracion"/>
+
+    <item
+        android:id="@+id/helpFragment"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="Help"/>
 </menu>
