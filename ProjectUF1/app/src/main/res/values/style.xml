@@ -27,6 +27,34 @@
         <item name="android:textFontWeight" tools:targetApi="p">400</item>
         <item name="android:background">@drawable/rectangle_bg_blue_400_b7_radius_31_5</item>
     </style>
+    <style name="txtInterregular20">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/indigo_400</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="txtInterregular20_1">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/red_A700</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="txtRobotomedium20_1">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtInterbold48">
+        <item name="android:textSize">48dp</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtInterregular16">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
+
+
 
 
 
