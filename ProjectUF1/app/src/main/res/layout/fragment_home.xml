@@ -5,10 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+    <FrameLayout android:id="@+id/frameHome"
         android:layout_height="match_parent"
-        android:text="Work in progress" />
-
+        android:layout_width="match_parent" style="@style/groupStylegray_500">
+        <ImageView android:id="@+id/imageImagenOne"
+            android:layout_gravity="start"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_imagen1"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_imagen1"/>
+    </FrameLayout>
 </FrameLayout>

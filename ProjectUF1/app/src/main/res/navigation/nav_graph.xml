@@ -58,47 +58,52 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.projectuf1.LoginFragment"
-        android:label="fragment_login"
+        android:label="Login"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.projectuf1.RegisterFragment"
-        android:label="fragment_register"
+        android:label="Registrar"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/forgettPasswordFragment"
         android:name="com.example.projectuf1.ForgettPasswordFragment"
-        android:label="fragment_forgett_password"
+        android:label="Recuperar contraseña"
         tools:layout="@layout/fragment_forgett_password" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.projectuf1.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Perfil"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/configFragment"
         android:name="com.example.projectuf1.ConfigFragment"
-        android:label="fragment_config"
+        android:label="Configuración"
         tools:layout="@layout/fragment_config" />
     <fragment
         android:id="@+id/helpFragment"
         android:name="com.example.projectuf1.HelpFragment"
-        android:label="fragment_help"
+        android:label="Ayuda"
         tools:layout="@layout/fragment_help" />
     <fragment
         android:id="@+id/cambiarContrasenaFragment"
         android:name="com.example.projectuf1.CambiarContrasenaFragment"
-        android:label="fragment_cambiar_contrasena"
+        android:label="Cambiar contraseña"
         tools:layout="@layout/fragment_cambiar_contrasena" />
     <fragment
         android:id="@+id/informacionFragment"
         android:name="com.example.projectuf1.InformacionFragment"
-        android:label="fragment_informacion"
+        android:label="Información"
         tools:layout="@layout/fragment_informacion" />
     <fragment
         android:id="@+id/reglasFragment"
         android:name="com.example.projectuf1.ReglasFragment"
-        android:label="fragment_reglas"
+        android:label="Reglas DND"
         tools:layout="@layout/fragment_reglas" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.projectuf1.EditProfileFragment"
+        android:label="Editar perfil"
+        tools:layout="@layout/fragment_edit_profile" />
 
 </navigation>
